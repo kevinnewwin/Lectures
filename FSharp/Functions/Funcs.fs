@@ -21,12 +21,12 @@ let square x = x * x
 // Apply the given interest rate to the given principal amount for the given number of years,
 // then return the resulting balance.
 let interest principal rate numYears =
-    let mutable year = 1
-    let mutable balance = principal
-    while year <= numYears do
-        balance <- balance * (1.0 + rate)
-        year <- year + 1
-    balance
+let mutable year = 1
+let mutable balance = principal
+while year <= numYears do
+balance <- balance * (1.0 + rate)
+year <- year + 1
+balance
 
 // What types are the three parameters? Infer it based on the body of the function.
 
@@ -42,42 +42,50 @@ let toCelcius tempF = (tempF - 32.0) * 5.0 / 9.0
 
 // Challenges:
 // Write a function that concatenates a string with itself.
-
+let kevin (str string) = str + str
 
 
 
 
 // Write a function that finds the harmonic mean of two floating-point numbers.
-
+let harmonicMean = y - 1 / (1/x+1/y)
 
 
 
 
 // Write a function that repeats a given string N times, with commas separating each
 // copy of the string.
+let repeatingString str n =
+let mutable count = 1
+let mutable ret = str
+while count < n do
+ret = ret + "," + str
+count = count + 1
+ret
 
+printfn
 
 
 
 
 
 [<EntryPoint>]
-let main argv = 
-    printfn "5 squared is %d" (square 5)
-    
-    // "Other hints" about the type of a parameter:
-    // The next line only works if the previous line is commented out.
-    // printfn "5.0 squared is %d" (square 5.0)
-    
-    // Lacking any other information about what type the parameter to "square" is, F#
-    // can examine where the function is called and infer the type of the parameter based
-    // on the type of the argument.
+let main argv =
+printfn "5 squared is %d" (square 5)
+
+// "Other hints" about the type of a parameter:
+// The next line only works if the previous line is commented out.
+// printfn "5.0 squared is %d" (square 5.0)
+
+// Lacking any other information about what type the parameter to "square" is, F#
+// can examine where the function is called and infer the type of the parameter based
+// on the type of the argument.
 
 
 
-    printfn "$10,000 after 10 years at 0.01%% interest yields %0.2f" (interest 10000.0 0.0001 10)
+printfn "$10,000 after 10 years at 0.01%% interest yields %0.2f" (interest 10000.0 0.0001 10)
 
-    printfn "90 degrees F = %0.1f degrees C" (toCelcius 90.0)    
+printfn "90 degrees F = %0.1f degrees C" (toCelcius 90.0)
 
-    
-    0 // return an integer exit code
+
+0 // return an integer exit code
